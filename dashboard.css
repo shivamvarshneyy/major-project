@@ -1,0 +1,178 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #f4f7fa;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+header .header-left {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Align image and text horizontally */
+}
+
+header .logo {
+    display: flex;
+    align-items: center; /* Align image and text next to each other */
+}
+
+header .logo-img {
+    width: 80px; /* Image width */
+    height: auto;
+    margin-right: 15px; /* Space between the image and the logo text */
+}
+
+header .logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+header .logo-text h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    display: inline; /* Ensure logo text is inline */
+}
+
+header .logo-text .slogan {
+    font-size: 14px;
+    color: #bdc3c7;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Add a hyphen before the slogan */
+header .logo-text .slogan::before {
+    content: " - ";
+    font-size: 18px;
+    color: #bdc3c7;
+    margin-right: 5px; /* Space between the hyphen and the slogan */
+}
+
+header .header-right {
+    flex: 2;
+    text-align: right;
+}
+
+header .header-right .menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+}
+
+header .header-right .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header .header-right .menu a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #34495e;
+    padding: 20px;
+    color: white;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #1abc9c;
+}
+
+.content-area {
+    flex: 1;
+    padding: 30px;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.option-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+}
+
+.option-card h3 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+option-card p {
+    color: #7f8c8d;
+}
+
+/* Responsive Design */
+@media (max-width: 680px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .content-area {
+        padding: 20px;
+    }
+}

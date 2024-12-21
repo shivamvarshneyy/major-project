@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../SoulSync.png" />
+  <title>Calorie Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- <header class="navbar">
+    <h1>Calorie Tracker</h1>
+  </header> -->
+
+  <!-- Multi-step form for initial setup -->
+  <section id="setup" class="content-section active">
+    <h2>Let's Get Started</h2>
+    <form id="setupForm">
+      <!-- Step 1: Name and Goal -->
+    <div class="step" id="step1">
+        <label for="name">What's your name?</label>
+        <input type="text" id="name" required>
+        <label for="goal">What's your goal?</label>
+        <select id="goal" required>
+        <option value="" disabled selected>Please select</option>
+        <option value="lose">Lose weight</option>
+        <option value="maintain">Maintain weight</option>
+        <option value="gain">Gain weight</option>
+        </select>
+        <button type="button" onclick="nextStep()">Next</button>
+    </div>
+
+      <!-- Step 2: Weight and Target Calories -->
+      <div class="step" id="step2" style="display:none;">
+        <label for="weight">Current Weight (kg)</label>
+        <input type="number" id="weight" required>
+        <label for="calorieGoal">Daily Calorie Goal (kcal)</label>
+        <input type="number" id="calorieGoal" required>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+
+      <!-- Final Step: Confirmation -->
+      <div class="step" id="step3" style="display:none;">
+        <p>Thank you, <span id="displayName"></span>! You're ready to start tracking your calories.</p>
+        <button type="button" onclick="finishSetup()">Finish</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashboard" class="content-section" style="display:none;">
+    <h2>Welcome, <span id="userName"></span>!</h2>
+    <div id="calorie-summary">
+      <p>Daily Calorie Goal: <span id="dailyGoal">0</span> kcal</p>
+      <p>Calories Consumed: <span id="caloriesConsumed">0</span> kcal</p>
+    </div>
+    <div id="meal-log">
+      <h3>Log Your Meal</h3>
+      <input type="text" id="mealName" placeholder="Meal Name">
+      <input type="number" id="mealCalories" placeholder="Calories">
+      <button onclick="logMeal()">Add Meal</button>
+    </div>
+    <ul id="mealList"></ul>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

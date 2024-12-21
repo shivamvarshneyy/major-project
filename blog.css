@@ -1,0 +1,123 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+/* Header Styles */
+header {
+    background-color: #3f3d56;
+    padding: 20px 30px;
+    color: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container .logo h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.header-container .logo .slogan {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.header-container .menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2em;
+}
+
+.header-container .menu a:hover {
+    text-decoration: underline;
+}
+
+.header-container .menu a.active {
+    color: #573b8a;
+}
+
+/* Blog Section Styles */
+.blog-container {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.blog-header h2 {
+    font-size: 2.5em;
+    color: #3f3d56;
+}
+
+.blog-header p {
+    font-size: 1.2em;
+    color: #888;
+}
+
+.blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.blog-post {
+    width: 30%;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h3 {
+    font-size: 1.8em;
+    color: #3f3d56;
+    margin-bottom: 15px;
+}
+
+.blog-post .author {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.blog-post img {
+    width: 100%;
+    height: auto;
+    margin: 15px 0;
+}
+
+.blog-post .read-more {
+    color: #573b8a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.blog-post .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #3f3d56;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

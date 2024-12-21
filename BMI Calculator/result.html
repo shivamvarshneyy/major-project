@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('download.jpeg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit; /* Inherit the background image */
+    filter: blur(8px); /* Adjust the blur effect */
+    z-index: 1; /* Place it behind the content */
+    }
+    .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased shadow for a better effect */
+    max-width: 800px;
+    width: 90%;
+    position: relative; /* Ensure the container is above the blurred background */
+    z-index: 2; /* Place it above the blurred background */
+    }
+    .result-text {
+      flex: 1;
+      text-align: left;
+    }
+    .result-text h2 {
+      font-size: 1.8em;
+      color: #4CAF50;
+    }
+    .result-text p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    .gauge-container {
+      flex: 1;
+      text-align: center;
+    }
+    .gauge {
+      position: relative;
+      width: 100%;
+      max-width: 350px;
+      height: 40px;
+      background: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .gauge-scale {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #4CAF50, #FFD700, #FFA500, #FF4500);
+      border-radius: 20px;
+    }
+    .pointer {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 100%;
+      background-color: #333;
+      transition: left 1s ease;
+    }
+    .legend {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .legend-item {
+      display: inline-block;
+      width: 20%;
+      text-align: center;
+      font-size: 0.9em;
+      color: #333;
+    }
+    .underweight { color: #4CAF50; }
+    .normal { color: #FFD700; }
+    .overweight { color: #FFA500; }
+    .obese { color: #FF4500; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="result-text">
+    <h2>Your BMI Result</h2>
+    <p id="bmiOutput"></p>
+    <p id="bmiAdvice"></p>
+  </div>
+
+  <div class="gauge-container">
+    <div class="gauge">
+      <div class="gauge-scale"></div>
+      <div class="pointer" id="pointer"></div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item underweight">Underweight</div>
+      <div class="legend-item normal">Normal</div>
+      <div class="legend-item overweight">Overweight</div>
+      <div class="legend-item obese">Obese</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      bmi: parseFloat(params.get("bmi")),
+      category: params.get("category"),
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const { bmi, category } = getQueryParams();
+    const bmiOutput = document.getElementById("bmiOutput");
+    const bmiAdvice = document.getElementById("bmiAdvice");
+    const pointer = document.getElementById("pointer");
+
+    bmiOutput.textContent = `Your BMI is ${bmi.toFixed(2)}, which is considered ${category}.`;
+
+    // Display advice based on BMI category
+    let adviceText = "";
+    if (category === "Underweight") {
+      adviceText = "You may need to gain weight for optimal health.";
+    } else if (category === "Normal") {
+      adviceText = "Great! You're within a healthy range.";
+    } else if (category === "Overweight") {
+      adviceText = "Consider lifestyle changes for better health.";
+    } else if (category === "Obese") {
+      adviceText = "It's recommended to consult a healthcare provider.";
+    }
+    bmiAdvice.textContent = adviceText;
+
+    // Map BMI to pointer position (assuming a BMI range from 10 to 40)
+    const minBMI = 10;
+    const maxBMI = 40;
+    const pointerPosition = ((bmi - minBMI) / (maxBMI - minBMI)) * 100;
+
+    // Set pointer position within the gauge
+    pointer.style.left = `${Math.min(Math.max(pointerPosition, 0), 100)}%`;
+  });
+</script>
+
+</body>
+</html>
