@@ -251,7 +251,7 @@ function sendUserMessage() {
     return;
   } else if (userInput === "exit") {
     appendMessage("Thank you for using the assessment. Goodbye!", "bot");
-    window.location.href = "../dashboard.html"; // Redirect to a dummy HTML page
+    window.location.href = "\docs\index.html"; // Redirect to a dummy HTML page
     return;
   }
 
